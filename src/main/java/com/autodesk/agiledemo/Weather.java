@@ -50,5 +50,26 @@ public class Weather {
 	}
 	public void setWindSpeed(String windSpeed) {
 		this.windSpeed = windSpeed;
+	}
+	public String getWearingAdvice() {
+		if (condition.equals("Raining") && isHot())
+			return "Umbrella, T-shirt";
+		
+		if (condition.equals("Raining") && isWarm())
+			return "Raincoat";
+		
+		if (condition.equals("Sunny") && isHot())
+			return "T-shirt";
+		
+		if (condition.equals("Sunny") && isWarm())
+			return "Shirts";
+		
+		return "Advice not available";
+	}
+	private boolean isWarm() {
+		return temperature >= 60 && temperature <= 69;
+	}
+	private boolean isHot() {
+		return temperature >= 70 && temperature <= 79;
 	}	
 }
